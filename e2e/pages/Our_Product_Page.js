@@ -1,150 +1,166 @@
-class OurProductPage{
-    openOurProductPage(){
-        cy.visit('http://www.webdriveruniversity.com/Page-Object-Model/products.html')
+import { productModalTexts } from "../../test-data/products-modal-text";
+
+
+export class OurProductPage{
+    visit(){
+        cy.visit('http://www.webdriveruniversity.com/Page-Object-Model/products.html');
     }
 
-    getContainerFluid(){
+    static get getContainerFluid(){
         return cy.get('div.container-fluid');
        
        }
-    getHomeLink(){
+    static get getHomeLink(){
 
        cy.contains('Home').should('be.visible');
        
     }
 
-    clickHomeLink() {
+    static get clickHomeLink() {
         cy.get('a[href="index.html"]').click();
       }
 
-    getOurProductsLink() {
+    static get getOurProductsLink() {
         
         cy.contains('Our Products').should('be.visible');
       }
 
-      getContactUsLink(){
+
+    static get getContactUsLink(){
         cy.contains('Contact Us').should('be.visible');
 
     }
-    clickContactUsLink() {
+    static get clickContactUsLink() {
         cy.get('a[href="../Contact-Us/contactus.html"]').click();
       }
 
-    getProductRow(){
+    static get getProductRow(){
         return cy.get('div.row');
        
        }
 
-       getSpecialOffersTitle(){
+    static get getSpecialOffersTitle(){
         return cy.get('.sub-heading').contains("Special Offers");
     }
 
-    getImginSpecialOffersProduct(){
+    static get getImgInSpecialOffersProduct(){
         return cy.get('img[src="../img/amp.svg"]');
 
     } 
 
-    getSpecialOffersLink(){
+    static get getSpecialOffersLink(){
         return cy.contains('Special Offers');
     }
 
     //
 
-    getCamerasTitle(){
+    static get getCamerasTitle(){
         return cy.get('.sub-heading').contains("Cameras");
     }
 
 
-    getImgInCamerasProduct(){
+    static get getImgInCamerasProduct(){
         return cy.get('img[src="../img/camera.svg"]');
 
     } 
 
-    getCamerasLink(){
+    static get getCamerasLink(){
         return cy.contains("Cameras");
     }
     //
 
-    getNewLaptopsTitle(){
+    static get getNewLaptopsTitle(){
         return cy.get('.sub-heading').contains("New Laptop");
     }
 
-    getImgInNewLaptops(){
+    static get getImgInNewLaptops(){
         return cy.get('img[src="../img/laptop1.svg"]');
 
     } 
 
-    getNewLaptopsLink(){
+    static get getNewLaptopsLink(){
         return cy.contains("New Laptops");
     }
 //
-    getUsedLaptopsTitle(){
+    static get getUsedLaptopsTitle(){
         return cy.get('.sub-heading').contains("Used Laptop");
     }
 
-    getImgInUsedLaptops(){
+    static get etImgInUsedLaptops(){
         return cy.get('img[src="../img/laptop2.svg"]');
 
     } 
 
-    getUsedLaptopsLink(){
+    static get getUsedLaptopsLink(){
         return cy.contains("Used Laptops");
     }
     //
-    getGameConsolesTitle(){
+    static get getGameConsolesTitle(){
         return cy.get('.sub-heading').contains("Game Consoles");
     }
 
-    getImgInGameConsoles(){
+    static get getImgInGameConsoles(){
         return cy.get('img[src="../img/nintendo.svg"]');
 
     } 
 
-    getGameConsolesLink(){
+    static get getGameConsolesLink(){
         return cy.contains("Used Laptops");
     }
     //
-    getComponentsTitle(){
+    static get getComponentsTitle(){
         return cy.get('.sub-heading').contains("Components");
     }
 
-    getImgInComponents(){
+    static get getImgInComponents(){
         return cy.get('img[src="../img/cards.svg"]');
 
     } 
 
-    getComponentsLink(){
+    static get getComponentsLink(){
         return cy.contains("Components");
     }
     //
-    getDesktopSystemsTitle(){
+    static get getDesktopSystemsTitle(){
         return cy.get('.sub-heading').contains("Desktop Systems");
     }
 
-    getImgInDesktopSystems(){
+    static get getImgInDesktopSystems(){
         return cy.get('img[src="../img/computer.svg"]');
 
     } 
 
-    getDesktopSystemsLink(){
+    static get getDesktopSystemsLink(){
         return cy.contains("Desktop Systems");
     }
     //
-    getAudioTitle(){
+    static get getAudioTitle(){
         return cy.get('.sub-heading').contains("Audio");
     }
 
-    getImgAudio(){
+    static get getImgAudio(){
         return cy.get('img[src="../img/boombox.svg"]');
 
     } 
 
-    getAudioLink(){
+    static get getAudioLink(){
         return cy.contains("Audio");
     }
+    // verifyModalText () {
+    //     // getModalDialogTitle().should('eq', productModalTexts[0].text);
+    //     // getModalDialogBody().should('eq', productModalTexts[1].text);
+    //     this.getModalDialogTitle().should('eq', productModalTexts[0].text);
+    //     this.getModalDialogBody().should('eq', productModalTexts[1].text);
 
+    static get getTitleProductModalText(){
+        return cy.contains(productModalTexts[0].titleProductModal);
+      }
 
-    
+      static get getBodyProductModalText(){
+        return cy.contains(productModalTexts[1].bodyProductModal);
+    } 
+
 }
+
 
 export default OurProductPage;

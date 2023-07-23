@@ -1,117 +1,113 @@
-class HomePage{
-    openHomePage(){
+
+export class HomePage {
+    visit() {
         cy.visit('http://www.webdriveruniversity.com/Page-Object-Model/index.html')
     }
     //мы проверяем что у нас есть такой тайтл Who Are We?
-        getWhoAreWeTitle(){
+    static get getWhoAreWeTitle() {
         return cy.contains('Who Are We?');
     }
 
-        getWhoAreWeText(){
-          return cy.contains('Lorem ipsum dolor sit amet, consectetur adipiscing elit');
+    static get getWhoAreWeText() {
+        return cy.xpath('//div[@class="caption"]/p[starts-with(text(), "Lorem")]');
     }
 
-        getOutMoreButton(){
-           return cy.get('#button-find-out-more').contains('Find Out More!');
+    static get getOutMoreButton() {
+        return cy.get('#button-find-out-more').contains('Find Out More!');
 
     }
-    getOutMoreButton(){
+    static get getOutMoreButton() {
         return cy.contains('button', 'Find Out More!');
     }
-        getCarouselInner() {
+    static get getCarouselInner1() {
         return cy.get('img[src="../img/amp.svg"]');
-  
+
     }
 
-        getCarouselInner() {
+    static get getCarouselInner2() {
         return cy.get('img[src="../img/boombox.svg"]');
-  
+
     }
 
-        getCarouselInner() {
+    static get getCarouselInner3() {
         return cy.get('img[src="../img/nintendo.svg"]');
-  
+
     }
 
-        getScrollLeftButton(){ 
+    static get getScrollLeftButton() {
         return cy.get('a[data-slide="prev"]');
-   
+
     }
 
-        getScrollRightButton(){ 
+    static get getScrollRightButton() {
         return cy.get('a[data-slide="next"]');
-   
-    } 
-
-        getCarouselIndicatorsButtonSlideZero(){
-
-         return cy.get('li[data-slide-to="0"]');
-    
-    }
-
-        getCarouselIndicatorsButtonSlideOne(){
-
-             return cy.get('li[data-slide-to="1"]');
-        
-        }
-        getCarouselIndicatorsButtonSlideTwo(){
- 
-            return cy.get('li[data-slide-to="2"]');
-       
-       }
-
-       getContainerFluid(){
-        return cy.get('div.container-fluid');
-       }
-     
-       getHomeLink(){
-
-        cy.contains('Home').should('be.visible');
-       }
-
-       getOurProductsLink() {
-        
-        cy.contains('Our Products').should('be.visible');
-      }
-      
-      clickOurProductLink() {
-        cy.get('a[href="products.html"]').click();
-      }
-
-       getContactUsLink(){
-        cy.contains('Contact Us').should('be.visible');
 
     }
-    
-       clickContactUsLink() {
-        cy.get('a[href="../Contact-Us/contactus.html"]').click();
-      }
 
-    getWhyChooseUsTitle(){
-        return cy.contains('Why Choose Us?');  
-    }
-   
-    getWhyChooseUsText(){
-        return cy.contains('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi elit sapien, tempus sit amet hendrerit volutpat, euismod vitae risus. Etiam consequat, sem et vulputate dapibus, diam enim tristique est, vitae porta eros mauris ut orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi elit sapien, tempus sit amet hendrerit volutpat, euismod vitae risus. Etiam consequat, sem et vulputate dapibus, diam enim tristique est, vitae porta eros mauris ut orci.');
+    static get getCarouselIndicatorsButtonSlideZero() {
+
+        return cy.get('li[data-slide-to="0"]');
+
     }
 
-    getGreatServiceTitle(){
-        return cy.contains('GREAT SERVICE!');  
+    static get getCarouselIndicatorsButtonSlideOne() {
+
+        return cy.get('li[data-slide-to="1"]');
+
+    }
+    static get getCarouselIndicatorsButtonSlideTwo() {
+
+        return cy.get('li[data-slide-to="2"]');
+
     }
 
-    getExcellentCustomerServiceTitle(){
+    static get getContainerFluid() {
+        return cy.xpath('//div[@class = "container-fluid"]');
+    }
+
+    static get displayHomeLink() {
+        return cy.xpath('//a[@href = "index.html"]');
+    }
+
+    static get displayOurProductsLink() {
+        return cy.xpath('//a[@href = "products.html"]');
+    }
+
+    static get clickOurProductsLink() {
+        return cy.xpath('//a[@href = "products.html"]').click();
+    }
+
+    static get displayContactUsLink() {
+       return cy.xpath('//a[@href="../Contact-Us/contactus.html"]');
+
+    }
+
+    static get clickContactUsLink() {
+        cy.xpath('//a[@href="../Contact-Us/contactus.html"]').click();
+    }
+
+    static get displayWhyChooseUsTitle() {
+        return cy.contains('Why Choose Us?');
+    }
+
+    static get checkDisplayFourTextLorem() {
+        return cy.xpath('//div[@class="thumbnail"]//div[@class="caption"]//p[contains(text(), "Lorem")]');
+    }
+
+    static get displayGreatServiceTitle() {
+        return cy.contains('GREAT SERVICE!');
+    }
+
+
+    static get displayExcellentCustomerServiceTitle() {
         return cy.contains('Excellent Customer Service!');
     }
 
-    getGreatServiceText() {
-        return cy.contains('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi elit sapien, tempus sit amet hendrerit volutpat, euismod vitae risus. Etiam consequat, sem et vulputate dapibus, diam enim tristique est, vitae porta eros mauris ut orci.');
-    }
- 
-    getBlockWithStars(){
+    static get getBlockWithStars() {
         return cy.get('div.div-star');
     }
 
-
 }
 
-    export default HomePage;
+
+export default HomePage;
