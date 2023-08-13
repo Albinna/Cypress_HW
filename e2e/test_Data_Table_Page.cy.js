@@ -1,96 +1,154 @@
+import { tableData2 } from "../test-data/data_table_values";
 import DataTablePage from "./pages/Data_Table_Page";
+import { firstTableRowsData } from "../test-data/data_table_values";
+import { users } from "../test-data/data_table_values";
+import { dataTableStep } from "../steps/Data_Table_Page_steps";
 
 const dataTablePage = new DataTablePage();
 
 describe('Data Table Page', () => {
-    it('Check Main Header', () =>{
-      dataTablePage.visit();
-      dataTablePage.getMainHeader();
-      dataTablePage.getMainHeaderText();
+  beforeEach(() => {
+    cy.visit('https://www.webdriveruniversity.com/Data-Table/index.html');
+  });
 
+  it('Check Main Header', () => {
+    dataTableStep.verifyGetMainHeader();
+    dataTableStep.verifyGetMainHeaderText();
+    // до введения степов  - dataTablePage.getMainHeaderText();
+    dataTableStep.openDataTablePage();
   })
 
-  it('Check table t01', () =>{
-    dataTablePage.visit();
-    dataTablePage.getTablet01().should('be.visible');
-    dataTablePage.getCellValue(0, 'Firstname').should('eq', 'John');
-    
-    // Access the cell value in the second row and "Last Name" column
-    dataTablePage.getCellValue(1, 'Lastname').should('eq', 'Smith');
-
-    // Access the cell value in the third row and "Age" column
-    dataTablePage.getCellValue(2, 'Age').should('eq', '45');
+  it('Check table t01/t02', () => {
+    dataTableStep.verifyCheckFirstTableContent();
+    dataTableStep.verifyCheckSecondTableContent();
+    dataTableStep.openDataTablePage();
   });
 
-  it('should get table headers', () => {
-    dataTablePage.getTableHeaders().should('have.length', 3); // Проверяем, что таблица содержит три заголовка столбцов
+  it('Check form text field', () => {
+    dataTableStep.verifyGetTextFirstName();
+    dataTableStep.verifyCheckInputFirstName();
+    dataTableStep.verifyGetFirstName('firstname');
+    dataTableStep.verifyGetTextLastName();
+    dataTableStep.verifyCheckInputLastName();
+    dataTableStep.verifyGetLastName('lastname');
+    dataTableStep.openDataTablePage();
   });
 
-  it('should get cell value', () => {
-    expect(dataTablePage.getCellValue(0, 'Firstname')).to.equal('John');
-    expect(dataTablePage.getCellValue(1, 'Lastname')).to.equal('Smith');
-    expect(dataTablePage.getCellValue(2, 'Age')).to.equal('45');
+  it('Check Input Text Below:', () => {
+    dataTableStep.verifyCheckInputTextBelowDisplay();
+    dataTableStep.verifyCheckTextArea();
+    dataTableStep.openDataTablePage();
   });
-
-  it('should validate cells in the table', () => {
-    const tablesData = [table1, table2];
-
-    for (let tableIndex = 0; tableIndex < tablesData.length; tableIndex++) {
-      const tableData = tablesData[tableIndex];
-
-      for (const [rowIndex, row] of tableData.entries()) {
-        for (const [columnIndex, cellValue] of row.entries()) {
-          dataTablePage.getTableCell(tableIndex + 1, rowIndex, columnIndex, cellValue).should('exist');
-        }
-      }
-    }
-    it('should access and validate table data', () => {
-      // Access and validate the first cell value (row 1, column 1)
-      dataTablePage.getCellValue(0, 0).should('eq', 'John');
-  
-      // Access and validate the second cell value (row 2, column 2)
-      dataTablePage.getCellValue(1, 1).should('eq', 'Smith');
-  
-      // Access and validate the third cell value (row 3, column 3)
-      dataTablePage.getCellValue(2, 2).should('eq', '28');
-    });
-
-  })
 
   it('Check Breadcrumb block', () => {
-    dataTablePage.visit();
-    dataTablePage.getHeaderBreadcrumb().should('be.visible');
-    dataTablePage.checkBreadcrumbHave3Elements("have.length", 3);
-    dataTablePage.checkSequenceOfElementsInBreadcrumb();
-    dataTablePage.getHomeMenuInBreadcrumb().should('exist');
-    dataTablePage.clickHomeMenuInBreadcrumb();
-    dataTablePage.getAboutUsMenuInBreadcrumb().should('exist');
-    dataTablePage.clickAboutUsMenuInBreadcrumb();
-    dataTablePage.getContactUsMenuInBreadcrumb().should('exist');
-    
+    dataTableStep.verifyGetHeaderBreadcrumb();
+    dataTableStep.verifyCheckBreadcrumbHave3Elements();
+    dataTableStep.verifyCheckSequenceOfElementsInBreadcrumb();
+    dataTableStep.verifyGetHomeMenuInBreadcrumb();
+    dataTableStep.verifyClickHomeMenuInBreadcrumb();
+    dataTableStep.verifyGetAboutUsMenuInBreadcrumb()
+    dataTableStep.verifyClickAboutUsMenuInBreadcrumb();
+    dataTableStep.verifyGetContactUsMenuInBreadcrumb();
+    dataTableStep.openDataTablePage();
   });
 
   it('Check Badges block', () => {
-    dataTablePage.visit();
-    dataTablePage.getHeaderBadges().should('be.visible');
-    dataTablePage.checkTodayDealsElement();
-    dataTablePage.checkQuantityTodayDealsElement();
-    dataTablePage.checkAllProductsElements();
-    dataTablePage.checkQuantityAllProductsElements();
+    dataTableStep.verifyGetHeaderBadges();
+    dataTableStep.verifyCheckTodayDealsElement();
+    dataTableStep.verifyCheckQuantityTodayDealsElement();
+    dataTableStep.verifyCheckAllProductsElements();
+    dataTableStep.verifyCheckQuantityAllProductsElements();
+    dataTableStep.openDataTablePage();
   })
 
-  it.only('Check Paginator block', () => {
-    dataTablePage.visit();
-    dataTablePage.getHeaderPaginator().should('be.visible');
-    dataTablePage.getPageNavigator().should('be.visible');
-    dataTablePage.checkPageSwitchingButtons();
-    dataTablePage.checkFirstPageIsActive();
-    dataTablePage.checkClickSecondPage();
-    dataTablePage.checkSecondPageIsActive();
-    dataTablePage.checkPreviousButton();
-    dataTablePage.checkNextButton();
-    dataTablePage.checkPageSwitching();
-    dataTablePage.checkPage6IsMissing();
-
+  it('Check Paginator block', () => {
+    dataTableStep.verifyGetHeaderPaginator();
+    dataTableStep.verifyGetPageNavigator();
+    dataTableStep.verifyCheckPageSwitchingButtons();
+    dataTableStep.verifyCheckFirstPageIsActive();
+    dataTableStep.verifyCheckClickSecondPage();
+    dataTableStep.verifyCheckSecondPageIsActive();
+    dataTableStep.verifyCheckPreviousButton();
+    dataTableStep.verifyCheckNextButton();
+    dataTableStep.verifyCheckPageSwitching();
+    dataTableStep.openDataTablePage();
   })
-})
+
+  it('Check Table block', () => {
+    dataTableStep.verifyGetTableHeader();
+    dataTableStep.verifyGetTable();
+    dataTableStep.verifyCheckTableHeaders();
+    dataTableStep.verifyCheckDataInTable();
+    dataTableStep.openDataTablePage();
+  });
+
+  it('Check Buttons And StatesTable block', () => {
+    dataTableStep.verifyGetButtonsAndStates();
+    dataTableStep.verifyGetClickLinkButton();
+    cy.url().should('contain', 'index.html');
+    dataTableStep.verifyGetClickButtonbutton();
+    dataTableStep.verifyGetClickInputButton();
+    dataTableStep.verifyGetClickSubmitButton();
+    dataTableStep.verifyGetClickResetButton();
+    dataTableStep.verifyGetClickDangerButton();
+    dataTableStep.verifyGetClickWarningButton();
+    dataTableStep.verifyGetClickInfoButton();
+    dataTableStep.verifyGetClickAlertButton();
+    dataTableStep.verifyGetClickButton1();
+    dataTableStep.openDataTablePage();
+  });
+
+  it('Check Random Text block', () => {
+    dataTableStep.verifyGetRandomTextHeader();
+    dataTableStep.verifyGetRandomTextContent();
+    dataTableStep.verifyGetMarkText();
+    dataTableStep.verifyGetBlockquote();
+    dataTableStep.verifyGetCheckFooter();
+    dataTableStep.openDataTablePage();
+  });
+
+  it('Check Header Lists', () => {
+    dataTableStep.verifyGetListsHeader();
+    dataTableStep.openDataTablePage();
+  });
+
+  it('Check traversal drinks list', () => {
+    dataTableStep.verifyGetListsHave5Elements()
+    dataTableStep.verifyGetCoffeeElement('be.visible');
+    dataTableStep.verifyGetMilkElement('be.visible');
+    dataTableStep.verifyGetTeaElement('be.visible');
+    dataTableStep.verifyGetEspressoElement('be.visible');
+    dataTableStep.verifyGetSugarElement('be.visible');
+    dataTableStep.openDataTablePage();
+  });
+
+  it('Check traversal food list', () => {
+    dataTableStep.verifyCheckTraversaFoodListHave5Elements('have.length', 11);
+    dataTableStep.verifyGetListHeaderFruits();
+    dataTableStep.verifyGetAppleElement();
+    dataTableStep.verifyGetBananaElement();
+    dataTableStep.verifyGetBlackberriesElement();
+    dataTableStep.verifyGetCherriesElement();
+    dataTableStep.verifyGetFigsElement();
+    dataTableStep.verifyGetListHeaderVegetables();
+    dataTableStep.verifyGetAsparagusElement();
+    dataTableStep.verifyGetBroccoliElement();
+    dataTableStep.verifyGetKidneyBeansElement();
+    dataTableStep.verifyGetLentilsElement();
+    dataTableStep.openDataTablePage();
+  });
+
+  it('Check Types of Jobs list', () => {
+    dataTableStep.verifyGetListHeaderTypesOfJobs();
+    dataTableStep.verifyCheckTypesOfJobsHave3Elements('have.length', 3);
+    dataTableStep.verifyGetFinanceElement();
+    dataTableStep.verifyGetTechnologyElement();
+    dataTableStep.verifyGetSalesElement();
+    dataTableStep.openDataTablePage();
+  });
+
+  it('Check Footer ', () => {
+    dataTableStep.verifyCheckFooter('be.visible');
+    dataTableStep.openDataTablePage();
+  });
+});

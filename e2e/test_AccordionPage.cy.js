@@ -72,6 +72,14 @@ describe('Accordion Page', () => {
         
       });
     });
+    it.only('Click on the LOADING.. PLEASE WAIT..button', () =>{
+      accordionPageSteps.visit();
+      cy.contains('LOADING.. PLEASE WAIT..').should('be.visible');
+      cy.wait(7500)
+      cy.contains('LOADING.. PLEASE WAIT..').should('not.exist');
+      cy.contains('LOADING COMPLETE.').should('exist');
+      
+    })
   });
      
      

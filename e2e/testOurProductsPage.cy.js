@@ -10,17 +10,21 @@ const titleProductModalText = productModalTexts[0].text;
 const bodyProductModalText = productModalTexts[1].text;
 
 describe('Test Our Product page', () => {
+  beforeEach(() => {
+    cy.visit('http://www.webdriveruniversity.com/Page-Object-Model/products.html');
+  });
 
-  it.only('Check links in the container fluid', () =>{
-    ourProductPageStep.visit();
+  it('Check links in the container fluid', () =>{
+    // ourProductPageStep.visit();
     ourProductPageStep.verifyGetContainerFluid();
-    ourProductPage.verifyGetHomeLink;
+    ourProductPageStep.verifyGetHomeLink;
     // cy.contains('Home').should('be.visible');
     ourProductPageStep.verifyGetOurProductsLink;
     ourProductPageStep.verifyClickHomeLink();
     // cy.url().should('include', 'index.html');
     ourProductPageStep.verifyGetOurProductsLink;
     ourProductPageStep.visit();
+    ourProductPageStep.openOurProductPage();
     // cy.contains('Contact Us').should('be.visible');
 
     // ourProductPage.openOurProductPage();
@@ -36,106 +40,102 @@ describe('Test Our Product page', () => {
 });
 
 it('Check Special Offers Item in the Product row', () =>{
-  ourProductPageStep.visit();
-
-  // ourProductPage.openOurProductPage();
-  // ourProductPage.getSpecialOffersTitle().should('be.visible');
-  // ourProductPage.getSpecialOffersLink().click();
-  // ourProductPage.getTitleProductModalText().should('exist');
-  // ourProductPage.getBodyProductModalText().should('exist');
-  // cy.contains('button', 'Proceed');
-  // cy.contains('button', 'Close');
-  // cy.get('button.close');
-  // ourProductPage.getImgInSpecialOffersProduct().should('exist');
-
+  ourProductPageStep.verifyGetSpecialOffersTitle();
+  ourProductPageStep.verifyGetSpecialOffersLink();
+  ourProductPageStep.verifyGetTitleProductModalText();
+  ourProductPageStep.verifyGetBodyProductModalText()
+  cy.contains('button', 'Proceed');
+  cy.contains('button', 'Close');
+  cy.get('button.close');
+  ourProductPageStep.verifyGetImgInSpecialOffersProduct();
+  ourProductPageStep.openOurProductPage();
 })
 
 
 it('Check Cameras Item in the Product row', () =>{
-  ourProductPage.openOurProductPage();
-  ourProductPage.getCamerasTitle().should('be.visible');
-  ourProductPage.getCamerasLink().click();
-  ourProductPage.getTitleProductModalText().should('exist');
-  ourProductPage.getBodyProductModalText().should('exist');
+  ourProductPageStep.verifyGetCamerasTitle();
+  ourProductPageStep.verifyGetCamerasLink();
+  ourProductPageStep.verifyGetTitleProductModalText();
+  ourProductPageStep.verifyGetBodyProductModalText();
   cy.contains('button', 'Proceed');
   cy.contains('button', 'Close');
   cy.get('button.close');
-  ourProductPage.getImgInCamerasProduct().should('exist');
-
+  ourProductPageStep.verifyGetImgInCamerasProduct();
+  ourProductPageStep.openOurProductPage();
 })
 
 it('Check Laptop Item in the Product row', () =>{
-  ourProductPage.openOurProductPage();
-  ourProductPage.getNewLaptopsTitle().should('be.visible');
-  ourProductPage.getNewLaptopsLink().click();
-  ourProductPage.getTitleProductModalText().should('exist');
-  ourProductPage.getBodyProductModalText().should('exist');
+  ourProductPageStep.verifyGetNewLaptopsTitle();
+  ourProductPageStep.verifyGetNewLaptopsLink();
+  ourProductPageStep.verifyGetTitleProductModalText();
+  ourProductPageStep.verifyGetBodyProductModalText();
   cy.contains('button', 'Proceed');
   cy.contains('button', 'Close');
   cy.get('button.close');
-  ourProductPage.getImgInNewLaptops().should('exist');
+  ourProductPageStep.verifyGetImgInNewLaptops();
+  ourProductPageStep.openOurProductPage();
 })
 
 
 it('Check Used Laptop Item in the Product row', () =>{
-  ourProductPage.openOurProductPage();
-  ourProductPage.getUsedLaptopsTitle().should('be.visible');
-  ourProductPage.getUsedLaptopsLink().click();
-  ourProductPage.getTitleProductModalText().should('exist');
-  ourProductPage.getBodyProductModalText().should('exist');
+  ourProductPageStep.verifyGetUsedLaptopsTitle();
+  ourProductPageStep.verifyGetUsedLaptopsLink();
+  ourProductPageStep.verifyGetTitleProductModalText();
+  ourProductPageStep.verifyGetBodyProductModalText();
   cy.contains('button', 'Proceed');
   cy.contains('button', 'Close');
   cy.get('button.close');
-  ourProductPage.getImgInUsedLaptops().should('exist');
+  ourProductPageStep.verifyGetImgInUsedLaptops();
+  ourProductPageStep.openOurProductPage();
 })
 
 it('Check Game Consoles Item in the Product row', () =>{
-  ourProductPage.openOurProductPage();
-  ourProductPage.getGameConsolesTitle().should('be.visible');
-  ourProductPage.getGameConsolesLink().click();
-  ourProductPage.getTitleProductModalText().should('exist');
-  ourProductPage.getBodyProductModalText().should('exist');
+  ourProductPageStep.verifyGetGameConsolesTitle();
+  ourProductPageStep.verifyGetGameConsolesLink();
+  ourProductPageStep.verifyGetTitleProductModalText();
+  ourProductPageStep.verifyGetBodyProductModalText();
   cy.contains('button', 'Proceed');
   cy.contains('button', 'Close');
   cy.get('button.close');
-  ourProductPage.getImgInGameConsoles().should('exist');
+  ourProductPageStep.verifyGetImgInGameConsoles();
+  ourProductPageStep.openOurProductPage();
 })
 
 
 it('Check Components Item in the Product row', () =>{
-  ourProductPage.openOurProductPage();
-  ourProductPage.getComponentsTitle().should('be.visible');
-  ourProductPage.getComponentsLink().click();
-  ourProductPage.getTitleProductModalText().should('exist');
-  ourProductPage.getBodyProductModalText().should('exist');
+  ourProductPageStep.verifyGetComponentsTitle();
+  ourProductPageStep.verifyGetComponentsLink();
+  ourProductPageStep.verifyGetTitleProductModalText();
+  ourProductPageStep.verifyGetBodyProductModalText();
   cy.contains('button', 'Proceed');
   cy.contains('button', 'Close');
   cy.get('button.close');
-  ourProductPage.getImgInComponents().should('exist');
+  ourProductPageStep.verifyGetImgInComponents();
+  ourProductPageStep.openOurProductPage();
 })
 
 it('Check Desktop Systems Item in the Product row', () =>{
-  ourProductPage.openOurProductPage();
-  ourProductPage.getDesktopSystemsTitle().should('be.visible');
-  ourProductPage.getDesktopSystemsLink().click();
-  ourProductPage.getTitleProductModalText().should('exist');
-  ourProductPage.getBodyProductModalText().should('exist');
+  ourProductPageStep.verifyGetDesktopSystemsTitle();
+  ourProductPageStep.verifyGetDesktopSystemsLink();
+  ourProductPageStep.verifyGetTitleProductModalText();
+  ourProductPageStep.verifyGetBodyProductModalText();
   cy.contains('button', 'Proceed');
   cy.contains('button', 'Close');
   cy.get('button.close');
-  ourProductPage.getImgInDesktopSystems().should('exist');
+  ourProductPageStep.verifyGetImgInDesktopSystems();
+  ourProductPageStep.openOurProductPage();
 })
 
 it('Check Audio Item in the Product row', () =>{
-  ourProductPage.openOurProductPage();
-  ourProductPage.getAudioTitle().should('be.visible');
-  ourProductPage.getAudioLink().click();
-  ourProductPage.getTitleProductModalText().should('exist');
-  ourProductPage.getBodyProductModalText().should('exist');
+  ourProductPageStep.verifyGetAudioTitle();
+  ourProductPageStep.verifyGetAudioLink();
+  ourProductPageStep.verifyGetTitleProductModalText();
+  ourProductPageStep.verifyGetBodyProductModalText();
   cy.contains('button', 'Proceed');
   cy.contains('button', 'Close');
   cy.get('button.close');
-  ourProductPage.getImgAudio().should('exist');
+  ourProductPageStep.verifyGetImgAudio();
+  ourProductPageStep.openOurProductPage();
 })
 
 })

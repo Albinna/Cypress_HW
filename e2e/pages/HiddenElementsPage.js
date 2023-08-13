@@ -1,5 +1,5 @@
 export class HiddenElementsPage{
-     visit(){
+    openHiddenElementsPage(){
         cy.visit('https://www.webdriveruniversity.com/Hidden-Elements/index.html')
         cy.url().should('include', 'Hidden-Elements')
     }

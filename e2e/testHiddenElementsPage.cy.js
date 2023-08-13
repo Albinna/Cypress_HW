@@ -2,8 +2,7 @@
 import { hiddenElementsSteps } from "../steps/HiddenElementsPages_steps";
 import { HiddenElementsPage } from "./pages/HiddenElementsPage";
 
-describe("Hidden elements", () =>{
-
+describe("Hidden elements page ", () =>{
 it("Click on the Not Displayed button" , () =>{
        cy.visit('https://www.webdriveruniversity.com/Hidden-Elements/index.html');
        cy.once('uncaught:exception', ()=> false);
@@ -12,7 +11,7 @@ it("Click on the Not Displayed button" , () =>{
     //    hiddenElementsSteps.getNavTitleInHiddenElementsPage()
 })
 
-it("Click on the Visibility button" , () =>{
+it.only("Click on the Visibility button" , () =>{
     cy.visit('https://www.webdriveruniversity.com/Hidden-Elements/index.html');
     cy.once('uncaught:exception', ()=> false);
     hiddenElementsSteps.clickVisibilityButton();
@@ -23,6 +22,7 @@ it("Click on the Zero Opacity button" , () =>{
     cy.visit('https://www.webdriveruniversity.com/Hidden-Elements/index.html');
     cy.once('uncaught:exception', ()=> false);
     hiddenElementsSteps.clickZeroOpacityButton();
+    
 })
 
 

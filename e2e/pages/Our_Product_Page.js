@@ -40,7 +40,7 @@ export class OurProductPage{
        }
 
     static get getSpecialOffersTitle(){
-        return cy.get('.sub-heading').contains("Special Offers");
+        return cy.get('.sub-heading').contains("Special Offers").should('be.visible');
     }
 
     static get getImgInSpecialOffersProduct(){
@@ -60,7 +60,7 @@ export class OurProductPage{
 
 
     static get getImgInCamerasProduct(){
-        return cy.get('img[src="../img/camera.svg"]');
+        return cy.get('img#camera-img').should('be.visible');
 
     } 
 
@@ -86,7 +86,7 @@ export class OurProductPage{
         return cy.get('.sub-heading').contains("Used Laptop");
     }
 
-    static get etImgInUsedLaptops(){
+    static get getImgInUsedLaptops(){
         return cy.get('img[src="../img/laptop2.svg"]');
 
     } 

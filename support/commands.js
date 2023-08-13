@@ -23,3 +23,17 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('getIframeBody', (locator) => {
+    return cy.get(locator).its('0.contentDocument').should('exist')
+    .its('body')//находим в док-те body
+    .should('not.be.undefined')// мы проверяем что body не undefined'
+    .then(cy.wrap);//then подождет пока выполнятся все команды и вернется body, потом выполнится cy.wrap
+})
+
+import dayjs from 'dayjs';
+
+Cypress.Commands.add('getCurrentDate', () => {
+    return dayjs().format('MM-DD-YYYY');
+  });
+

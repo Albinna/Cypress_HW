@@ -2,8 +2,8 @@ import { HiddenElementsPage } from "../e2e/pages/HiddenElementsPage";
 import { GeneralStep } from "./general_step.";
 
 export class HiddenElementSteps extends GeneralStep{
-    visit(){
-        HiddenElementsPage.visit();
+    openHiddenElementsPage(){
+        cy.visit('https://www.webdriveruniversity.com/Hidden-Elements/index.html');
         cy.url().should('include', "Hidden-Elements");
     }
     //добавляем наши функции
